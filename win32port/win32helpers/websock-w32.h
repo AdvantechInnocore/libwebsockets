@@ -33,6 +33,15 @@
 #ifdef DEF_POLL_STUFF
 
 #include <winsock2.h>
+#ifdef _WIN32_WINNT
+#ifndef AI_HAX_DEFINED_TIMEVAL
+struct timeval {
+        long    tv_sec;         /* seconds */
+        long    tv_usec;        /* and microseconds */
+};
+#define AI_HAX_DEFINED_TIMEVAL
+#endif
+#endif
 
 typedef struct pollfd {
 	SOCKET fd;
